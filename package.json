@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "yargs": "^12.0.2"
-  }
+  },
+  "name": "todo-node-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vegaj/todo-node-tutorial",
+  "author": "vegaj <jvegamoreno@outlook.com>",
+  "license": "MIT"
 }
