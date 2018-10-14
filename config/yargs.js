@@ -27,8 +27,8 @@ const argv = yargs
         name
     })
     .command('list', 'prints all the todos', {
-        hideCompletes: {
-            alias: 'hide',
+        hide: {
+            alias: 'h',
             description: "doesn't shows the already completed tasks",
             default: false
         }

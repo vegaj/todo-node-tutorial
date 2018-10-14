@@ -21,13 +21,16 @@ switch (command) {
             console.log("element not found");
         break;
     case 'list':
-        let res = todos.list()
+        let res = todos.list(argv.hide)
         res.forEach(elem => todos.display(elem))
         break;
     case 'update':
-        todos.update(argv.name, argv.completed)
-            .then(() => { console.log('updated succesfully') })
-            .catch(r => { console.log(r.message) });
+        let updated = todos.update(argv.name, argv.completed)
+        if (updated) {
+            console.log('updated')
+        } else {
+            console.log(`${argv.name} not found`)
+        }
         break;
     default:
         console.log('Command unrecognized');

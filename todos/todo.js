@@ -8,7 +8,7 @@ const colors = require('colors')
 let create = (name, text) => {
 
     if (todos.length === 0) {
-        todos = fetch()
+        todos = fetch();
     }
 
     let t = {
@@ -17,82 +17,82 @@ let create = (name, text) => {
         completed: false
     }
 
-    const index = todos.findIndex(elem => name === elem.name)
+    const index = todos.findIndex(elem => name === elem.name);
     if (index < 0) {
-        todos.push(t)
-        return t
+        todos.push(t);
+        return t;
     } else {
-        return false
+        return false;
     }
 
 }
 
 
-let list = (hide) => {
+let list = (hide = false) => {
 
     if (todos.length == 0) {
-        todos = fetch()
+        todos = fetch();
     }
 
     let list;
     if (hide) {
-        list = todos.filter(t => !t.completed)
+        list = todos.filter(t => !t.completed);
     } else {
-        list = todos
+        list = todos;
     }
-    return list
+    return list;
 }
 
 let remove = (name) => {
 
     if (todos.length == 0) {
-        todos = fetch()
+        todos = fetch();
     }
 
-    let updatedList = todos.filter(t => t.name !== name)
+    let updatedList = todos.filter(t => t.name !== name);
     if (updatedList.length === todos.length) {
-        return false
+        return false;
     } else {
-        todos = updatedList
-        save()
-        return true
+        todos = updatedList;
+        save();
+        return true;
     }
 }
 
 let update = (name, completed) => {
 
     if (todos.length == 0)
-        todos = fetch()
+        todos = fetch();
 
-    let i = todos.findIndex(t => t.name === name)
+    let i = todos.findIndex(t => t.name === name);
     if (i < 0)
-        return false
+        return false;
 
-    todos[i].completed = completed
-    save()
-    return true
+    todos[i].completed = completed;
+    save();
+    return true;
 
 }
 
 
 let save = () => {
-    const data = JSON.stringify(todos)
-    fs.writeFile(db, data, err => err && console.log(`Unable to save the data: ${err}`))
+    const data = JSON.stringify(todos);
+    fs.writeFile(db, data, err => err && console.log(`Unable to save the data: ${err}`));
 }
 
 let fetch = () => {
     try {
-        return require('../db/data.json')
+        return require('../db/data.json');
     } catch (e) {
-        return []
+        return [];
     }
 }
 
 let display = (todo) => {
-    console.log("_______________")
-    console.log(colors.yellow(todo.name))
-    console.log(todo.text)
-    console.log("Done: " + (todo.completed ? "[x]".green : "[ ]".gray))
+    console.log("_______________");
+    console.log(colors.yellow(todo.name));
+    console.log(todo.text);
+    console.log("Done: " + (todo.completed ? "[x]".green : "[ ]".gray));
 }
 
 module.exports = {
